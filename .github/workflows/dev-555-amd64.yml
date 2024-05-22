@@ -24,7 +24,7 @@ jobs:
       run: ./prep-archives.sh
     
     - name: Build amd64 Package
-      run: ./ubuntu-nvidia-drivers-mirror/amd64.sh
+      run: ./ubuntu-nvidia-drivers-mirror/makedriver.sh amd64
     
     - name: See for ourselves
       run: ./check-files.sh

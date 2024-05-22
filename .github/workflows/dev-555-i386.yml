@@ -24,7 +24,7 @@ jobs:
       run: ./prep-archives.sh
     
     - name: Build i386 Package
-      run: ./ubuntu-nvidia-drivers-mirror/i386.sh
+      run: ./ubuntu-nvidia-drivers-mirror/makedriver.sh i386
     
     - name: See for ourselves
       run: ./check-files.sh
