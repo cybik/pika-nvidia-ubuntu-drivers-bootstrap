@@ -17,7 +17,7 @@ jobs:
         pika-arch:
           - amd64
           - i386
-          exclude:
+        exclude:
           - pika-image: pika-package-container
             pika-arch: i386
           - pika-image: pika-i386-package-container
