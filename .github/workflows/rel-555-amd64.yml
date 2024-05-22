@@ -1,4 +1,4 @@
-name: PikaOS Package Dev build (Nvidia Ubuntu Forced 555)
+name: PikaOS Package Release (Nvidia Ubuntu Forced 555)
 
 on:
   release:
