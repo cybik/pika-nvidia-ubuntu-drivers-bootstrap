@@ -1,4 +1,4 @@
-name: PikaOS Package Release i386 (Nvidia Ubuntu Forced 555)
+name: PikaOS Package Release (Nvidia Ubuntu Forced 555)
 
 on:
   release:
@@ -9,9 +9,14 @@ permissions:
 
 jobs:
   build:
+    strategy:
+      matrix:
+        pika-image:
+          - pika-package-container
+          - pika-i386-package-container
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/pikaos-linux/pika-i386-package-container:latest
+      image: ghcr.io/pikaos-linux/${{ matrix.pika-image }}:latest
       volumes:
         - /proc:/proc
       options: --privileged -it
@@ -25,8 +30,8 @@ jobs:
     - name: Update apt cache
       run: apt-get update -y
 
-    - name: Build i386 Package
-      run: ./ubuntu-nvidia-drivers-mirror/makedriver.sh i386
+    - name: Build amd64 Package
+      run: ./ubuntu-nvidia-drivers-mirror/makedriver.sh amd64
 
     - name: Prepare nVidia driver archive
       run: ./prep-archives.sh

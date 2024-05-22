@@ -5,9 +5,14 @@ on:
 
 jobs:
   build:
+    strategy:
+      matrix:
+        pika-image:
+          - pika-package-container
+          - pika-i386-package-container
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/pikaos-linux/pika-package-container:latest
+      image: ghcr.io/pikaos-linux/${{ matrix.pika-image }}:latest
       volumes:
         - /proc:/proc
       options: --privileged -it
