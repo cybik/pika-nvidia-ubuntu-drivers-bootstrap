@@ -1,3 +1,3 @@
 #! /bin/bash
 
-find . -name *.deb -type f
+find . -name "*.deb" -type f
