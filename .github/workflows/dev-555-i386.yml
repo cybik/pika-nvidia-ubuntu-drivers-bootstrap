@@ -25,3 +25,6 @@ jobs:
     
     - name: Build i386 Package
       run: ./ubuntu-nvidia-drivers-mirror/i386.sh
+    
+    - name: See for ourselves
+      run: ./check-files.sh

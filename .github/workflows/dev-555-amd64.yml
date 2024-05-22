@@ -25,3 +25,6 @@ jobs:
     
     - name: Build amd64 Package
       run: ./ubuntu-nvidia-drivers-mirror/amd64.sh
+    
+    - name: See for ourselves
+      run: ./check-files.sh
