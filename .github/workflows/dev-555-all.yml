@@ -1,7 +1,9 @@
-name: PikaOS Package Dev build (Nvidia Ubuntu Forced 555)
+name: PikaOS nVidia Driver Prep CI
 
 on:
-  push
+  push:
+    branches:
+      - '**'
 
 jobs:
   build:
@@ -35,9 +37,3 @@ jobs:
     
     - name: Build amd64 Package
       run: ./ubuntu-nvidia-drivers-mirror/makedriver.sh ${{ matrix.pika-arch }}
-    
-    - name: Prepare nVidia driver archive
-      run: ./prep-archives.sh
-    
-    - name: See for ourselves
-      run: ./check-files.sh

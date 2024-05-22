@@ -1,4 +1,4 @@
-name: PikaOS Package Release (Nvidia Ubuntu Forced 555)
+name: PikaOS nVidia Driver Prep GH Release
 
 on:
   release:
@@ -41,13 +41,10 @@ jobs:
     - name: Build amd64 Package
       run: ./ubuntu-nvidia-drivers-mirror/makedriver.sh ${{ matrix.pika-arch }}
 
-    - name: Prepare nVidia driver archive
+    - name: Prepare nVidia ${{ matrix.pika-arch }} driver packages for release
       run: ./prep-archives.sh
 
-    - name: See for ourselves
-      run: ./check-files.sh
-
-    - name: Yeet
+    - name: Upload as release binaries
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GH_TAG: ${{ github.ref }}
