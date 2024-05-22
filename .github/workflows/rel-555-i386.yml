@@ -32,6 +32,6 @@ jobs:
 
     - name: Yeet
       env:
-        GITHUB_TOKEN: ${{ secrets.TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GH_TAG: ${{ github.ref }}
       run: ./release.sh
