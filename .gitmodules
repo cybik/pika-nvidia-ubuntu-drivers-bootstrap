@@ -1,0 +1,3 @@
+[submodule "ubuntu-nvidia-drivers-mirror"]
+	path = ubuntu-nvidia-drivers-mirror
+	url = git@github.com:cybik/ubuntu-nvidia-drivers-mirror.git
