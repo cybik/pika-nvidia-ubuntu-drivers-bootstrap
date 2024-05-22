@@ -10,6 +10,14 @@ jobs:
         pika-image:
           - pika-package-container
           - pika-i386-package-container
+        pika-arch:
+          - amd64
+          - i386
+        include:
+          - pika-image: pika-package-container
+            pika-arch: amd64
+          - pika-image: pika-i386-package-container
+            pika-arch: i386
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/pikaos-linux/${{ matrix.pika-image }}:latest
@@ -26,7 +34,7 @@ jobs:
       run: apt-get update -y
     
     - name: Build amd64 Package
-      run: ./ubuntu-nvidia-drivers-mirror/makedriver.sh amd64
+      run: ./ubuntu-nvidia-drivers-mirror/makedriver.sh ${{ matrix.pika-arch }}
     
     - name: Prepare nVidia driver archive
       run: ./prep-archives.sh
