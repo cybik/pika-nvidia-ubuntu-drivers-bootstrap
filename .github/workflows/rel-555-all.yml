@@ -17,11 +17,11 @@ jobs:
         pika-arch:
           - amd64
           - i386
-        include:
+          exclude:
           - pika-image: pika-package-container
-            pika-arch: amd64
-          - pika-image: pika-i386-package-container
             pika-arch: i386
+          - pika-image: pika-i386-package-container
+            pika-arch: amd64
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/pikaos-linux/${{ matrix.pika-image }}:latest
