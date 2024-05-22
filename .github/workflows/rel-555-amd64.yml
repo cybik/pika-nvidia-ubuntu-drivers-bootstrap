@@ -1,0 +1,37 @@
+name: PikaOS Package Dev build (Nvidia Ubuntu Forced 555)
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/pikaos-linux/pika-package-container:latest
+      volumes:
+        - /proc:/proc
+      options: --privileged -it
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        submodules: true
+
+    - name: Update apt cache
+      run: apt-get update -y
+
+    - name: Build amd64 Package
+      run: ./ubuntu-nvidia-drivers-mirror/makedriver.sh amd64
+
+    - name: Prepare nVidia driver archive
+      run: ./prep-archives.sh
+
+    - name: See for ourselves
+      run: ./check-files.sh
+
+    - name: Yeet
+      env:
+        GITHUB_TOKEN: ${{ secrets.TOKEN }}
+        GH_TAG: ${{ github.ref }}
+      run: ./release.sh
